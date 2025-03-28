@@ -81,7 +81,7 @@ function App() {
     return ATTRIBUTE_LIST.map((attributeName) => {
       const point = attributePoints[attributeName]
       return (
-        <div>
+        <div key={attributeName}>
             <div>
               {attributeName}: {point} &#40;Modifier: {calculateModifier(point)}&#41;
               <button onClick={() => incrementAttribute(attributeName, 1)}>+</button>
@@ -107,7 +107,7 @@ function App() {
   function getClasses() {
     return Object.keys(CLASS_LIST).map(className => {
       return (
-        <div style={{color: isValidClass(className) ? 'white' : 'red'}} onClick={() => setShowClassRequirements(className)}>
+        <div key={className} style={{color: isValidClass(className) ? 'white' : 'red'}} onClick={() => setShowClassRequirements(className)}>
           {className}
         </div>
       )
@@ -137,7 +137,7 @@ function App() {
       const modifier = calculateModifier(attributePoints[skill.attributeModifier])
 
       return (
-        <div>
+        <div key={skill.name}>
           {skill.name} - point: {skillPoint}
           &nbsp;<button onClick={() => incrementSkill(skill, 1)}>+</button>
           &nbsp;<button onClick={() => incrementSkill(skill, -1)}>-</button>
